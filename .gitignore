@@ -1,0 +1,52 @@
+# 依赖与构建产物
+node_modules/
+__pycache__/
+*.pyc
+dist/
+build/
+.venv/
+venv/
+
+# 打包产物
+*.tgz
+*.zip
+*.skill
+
+# 密钥与配置（严禁入库）
+.env
+.env.*
+*.pem
+*.key
+*_token*
+*_secret*
+credentials.json
+secrets/
+
+# 业务数据与大体量文件
+*.db
+*.sqlite
+*.sqlite3
+*.xlsx
+*.xls
+*.csv
+*.parquet
+
+# 媒体与文档（按需单独评审）
+*.docx
+*.pptx
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.mp3
+
+# 编辑器与系统
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*~
+~$*
+*.log

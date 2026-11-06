@@ -1,0 +1,13 @@
+{
+  "$schema": "./dsh-plugins.schema.json",
+  "version": 1,
+  "repository": {
+    "owner": "Zhong1856572",
+    "name": "dsh-plugins",
+    "ref": "main",
+    "subdirectory": "skills"
+  },
+  "skills": [],
+  "plugins": [],
+  "updatedAt": "2026-11-06T09:20:00+08:00"
+}
