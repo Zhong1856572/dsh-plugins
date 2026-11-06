@@ -11,4 +11,4 @@ agent_created: true
 这是验证 upload-skill.sh 提交推送链路的临时技能，测试后删除。
 
 本机路径：<WORKBUDDY_HOME>/skills/_upload-script-selftest
-内网地址：192.168.80.61
+内网地址：<INTERNAL_IP>
