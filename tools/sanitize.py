@@ -9,9 +9,10 @@ import pathlib
 # 顺序重要：先匹配更具体的 .workbuddy，再匹配通用家目录
 RULES = [
     # Windows：家目录 + .workbuddy
-    (re.compile(r'[Cc]:[\\/]+Users[\\/]+[A-Za-z0-9_.\-]+[\\/]*\.workbuddy'), '<WORKBUDDY_HOME>'),
+    # 盘符不限 C/D/E…（家目录不一定装在 C 盘，D 盘同样要脱敏）
+    (re.compile(r'[A-Za-z]:[\\/]+Users[\\/]+[A-Za-z0-9_.\-]+[\\/]*\.workbuddy'), '<WORKBUDDY_HOME>'),
     # Windows / Unix：通用家目录
-    (re.compile(r'[Cc]:[\\/]+Users[\\/]+[A-Za-z0-9_.\-]+'), '<USER_HOME>'),
+    (re.compile(r'[A-Za-z]:[\\/]+Users[\\/]+[A-Za-z0-9_.\-]+'), '<USER_HOME>'),
     (re.compile(r'/home/[A-Za-z0-9_.\-]+'), '<USER_HOME>'),
     (re.compile(r'/Users/[A-Za-z0-9_.\-]+'), '<USER_HOME>'),
     # 内网 IP（RFC1918）

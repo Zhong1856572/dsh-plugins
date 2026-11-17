@@ -96,6 +96,27 @@ description: 微信公众号与多平台文案排版辅助工具
 | # | 技能 | 版本 | 说明 |
 |---|---|---|---|
 | 1 | `numeric-table-anchor-consistency` | 1.2.0 | 多表数值文档的跨表口径一致性生成与校验 SOP（薪酬/费率/分档/测算表） |
+| 2 | `inquiry-structure-extract` | 1.0.4 | 从 Word/Excel 提取全部结构式图片，按文档顺序写入固定模版的「结构式」列，导出新的咨询表 |
+
+---
+
+## 插件清单
+
+| # | 插件 | 版本 | 说明 |
+|---|---|---|---|
+| 1 | `inquiry-structure-workbench` | 1.0.4 | DSH 工作台「询单结构式助手」：上传 → 预览勾选 → 写入固定模版 → 自选位置另存为。源码在 `plugins/inquiry-structure-workbench/` |
+
+安装（源码打包后装进本机 DSH）：
+
+```powershell
+git clone https://github.com/Zhong1856572/dsh-plugins.git
+cd dsh-plugins/plugins/inquiry-structure-workbench
+npm pack
+dsh plugin --profile desktop add ./local-inquiry-structure-workbench-1.0.4.tgz
+```
+
+> 模版是业务文件，不随仓库分发（`.gitignore` 已排除 `*.xlsx`）。
+> 装好后到工作台里指定模版路径：`<USER_HOME>\Desktop\业务咨询货号申请表.xlsx`。
 
 ---
 

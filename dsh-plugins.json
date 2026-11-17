@@ -9,14 +9,30 @@
   },
   "skills": [
     {
+      "name": "inquiry-structure-extract",
+      "path": "skills/inquiry-structure-extract",
+      "description": "从 Word(.docx) / Excel(.xlsx) 里把全部结构式图片按「文档从上到下」的顺序提取出来，",
+      "version": "1.0.4",
+      "category": "capability",
+      "updatedAt": "2026-11-17T09:42:52+08:00"
+    },
+    {
       "name": "numeric-table-anchor-consistency",
       "path": "skills/numeric-table-anchor-consistency",
       "description": "多表数值文档（薪酬/费率/分档/测算表）的「跨表口径一致性」生成与校验 SOP。核心是三条纪律：",
       "version": "1.2.0",
       "category": "capability",
-      "updatedAt": "2026-11-17T08:52:56+08:00"
+      "updatedAt": "2026-11-17T09:42:52+08:00"
     }
   ],
-  "plugins": [],
-  "updatedAt": "2026-11-17T08:52:56+08:00"
+  "plugins": [
+    {
+      "name": "inquiry-structure-workbench",
+      "package": "@local/inquiry-structure-workbench",
+      "version": "1.0.4",
+      "description": "DSH 工作台「询单结构式助手」：上传 Word/Excel → 按文档顺序预览勾选全部结构式 → 写入固定模版的「结构式/产品信息」列 → 自选位置另存为新表。图形界面版，源码在本仓库 plugins/ 目录。",
+      "install": "git clone https://github.com/Zhong1856572/dsh-plugins.git && cd dsh-plugins/plugins/inquiry-structure-workbench && npm pack && dsh plugin --profile desktop add ./local-inquiry-structure-workbench-1.0.4.tgz"
+    }
+  ],
+  "updatedAt": "2026-11-17T09:42:52+08:00"
 }

@@ -1,0 +1,22 @@
+# @local/inquiry-structure-workbench 的 bundle patch：把「询单结构式助手」插入 profile 补丁层。
+#
+# 行为口径见同目录 CONTRACT.md（唯一事实源）。
+# 边界：只读用户本机的源文件与模版，只在本机磁盘写出结果；不联网、不上传任何数据。
+
+- insert:
+    - id: inquiry-structure-workbench
+      name: '@local/inquiry-structure-workbench'
+      # 行级依赖注入：即使模块的 export 形状被宿主改写，webServer 也会被注入。
+      # 少了这一行，ctx.webServer 会抛 "without inject"，HTTP 路由静默不上线。
+      inject:
+        - webServer
+      config:
+        # 默认固定模版。模版被改名或移走时，服务端会在同一目录按内容
+        # （有「结构式」列、且没写过图）自动找回，所以这里填哪个文件名都不致命。
+        defaultTemplatePath: '<USER_HOME>\Desktop\业务咨询货号申请表.xlsx'
+        # 默认输出目录；留空 = 模版所在目录。
+        defaultOutputDir: ''
+        # 临时工作目录（上传分片、解析缓存）；留空 = 系统临时目录下的 inquiry-structure-workbench。
+        workDir: ''
+        # 单个上传分片上限（字节）。客户端按这个值切分文件，请求体始终很小。
+        maxChunkBytes: 262144
