@@ -11,12 +11,12 @@
     {
       "name": "numeric-table-anchor-consistency",
       "path": "skills/numeric-table-anchor-consistency",
-      "description": "多表数值文档的跨表口径一致性生成与校验 SOP（薪酬/费率/分档/测算表）",
+      "description": "多表数值文档（薪酬/费率/分档/测算表）的「跨表口径一致性」生成与校验 SOP。核心是三条纪律：",
       "version": "1.2.0",
       "category": "capability",
-      "updatedAt": "2026-11-06T09:20:00+08:00"
+      "updatedAt": "2026-11-17T08:52:56+08:00"
     }
   ],
   "plugins": [],
-  "updatedAt": "2026-11-17T08:49:38+08:00"
+  "updatedAt": "2026-11-17T08:52:56+08:00"
 }
