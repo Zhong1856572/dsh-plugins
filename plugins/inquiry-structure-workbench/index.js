@@ -30,16 +30,17 @@ import { readZip } from './lib/zip.js'
 export const inject = ['webServer']
 
 const PLUGIN_ID = 'inquiry-structure-workbench'
-const PLUGIN_VERSION = '1.0.4'
+const PLUGIN_VERSION = '1.0.5'
 /** 构建标记：客户端拿它跟自己比，不一致就说明桌面端没重启（跑的是旧界面） */
-const PLUGIN_BUILD = '1.0.4-20261113'
+const PLUGIN_BUILD = '1.0.5-20261117'
 /** 本服务端要求的最低客户端构建号（客户端行为没变时保持旧值，避免误报"请重启"） */
-const CLIENT_BUILD_REQUIRED = '1.0.4-20261113'
+const CLIENT_BUILD_REQUIRED = '1.0.5-20261117'
 const API_PREFIX = '/inquiry-structure/api'
 
 /** 默认配置（cordis.patch.yml 会覆盖同名键） */
 export const DEFAULTS = {
-  /** 默认固定模版；改名/移走时会在同目录按内容自动找回 */
+  /** 默认固定模版；改名/移走时会在同目录按内容自动找回
+   *  支持占位符：<USER_HOME> → 当前用户家目录（发布版用它避免写死本机路径） */
   defaultTemplatePath: '<USER_HOME>\\Desktop\\业务咨询货号申请表.xlsx',
   /** 默认输出目录（留空 = 模版所在目录） */
   defaultOutputDir: '',
@@ -47,6 +48,24 @@ export const DEFAULTS = {
   workDir: '',
   /** 单个上传分片上限（字节，客户端据此切分） */
   maxChunkBytes: 262144,
+}
+
+/**
+ * 展开路径里的占位符。
+ * 发布版把本机路径脱敏成 <USER_HOME>，装到别人机器上时要还原成对方的家目录。
+ * @param {string} value
+ * @returns {string}
+ */
+function expandPlaceholders(value) {
+  if (!value) return value
+  let out = value
+  if (out.includes('<USER_HOME>')) {
+    out = out.split('<USER_HOME>').join(os.homedir())
+  }
+  if (out.includes('<WORKBUDDY_HOME>')) {
+    out = out.split('<WORKBUDDY_HOME>').join(path.join(os.homedir(), '.workbuddy'))
+  }
+  return out
 }
 
 /* ------------------------------------------------------------------ *
@@ -250,8 +269,8 @@ function buildRuntime(ctx, config) {
   const workDir = defaultWorkDir(settings)
   const store = createSessions(workDir)
 
-  const defaultTemplatePath = str(settings.defaultTemplatePath).trim()
-  const defaultOutputDir = str(settings.defaultOutputDir).trim()
+  const defaultTemplatePath = expandPlaceholders(str(settings.defaultTemplatePath).trim())
+  const defaultOutputDir = expandPlaceholders(str(settings.defaultOutputDir).trim())
 
   function templateExists(filePath) {
     try {
@@ -367,7 +386,7 @@ function buildRuntime(ctx, config) {
 
   /** 读取模版字节：优先按路径，其次按上传文件 */
   function readTemplateBytes(body) {
-    const templatePath = str(body.templatePath).trim()
+    const templatePath = expandPlaceholders(str(body.templatePath).trim())
     if (templatePath) {
       if (!templateExists(templatePath)) throw new Error(`找不到模版文件：${templatePath}`)
       return { buffer: fs.readFileSync(templatePath), path: templatePath }

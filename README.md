@@ -104,7 +104,7 @@ description: 微信公众号与多平台文案排版辅助工具
 
 | # | 插件 | 版本 | 说明 |
 |---|---|---|---|
-| 1 | `inquiry-structure-workbench` | 1.0.4 | DSH 工作台「询单结构式助手」：上传 → 预览勾选 → 写入固定模版 → 自选位置另存为。源码在 `plugins/inquiry-structure-workbench/` |
+| 1 | `inquiry-structure-workbench` | 1.0.5 | DSH 工作台「询单结构式助手」：上传 → 预览勾选 → 写入固定模版 → 自选位置另存为。源码在 `plugins/inquiry-structure-workbench/` |
 
 安装（源码打包后装进本机 DSH）：
 
@@ -112,7 +112,7 @@ description: 微信公众号与多平台文案排版辅助工具
 git clone https://github.com/Zhong1856572/dsh-plugins.git
 cd dsh-plugins/plugins/inquiry-structure-workbench
 npm pack
-dsh plugin --profile desktop add ./local-inquiry-structure-workbench-1.0.4.tgz
+dsh plugin --profile desktop add ./local-inquiry-structure-workbench-1.0.5.tgz
 ```
 
 > 模版是业务文件，不随仓库分发（`.gitignore` 已排除 `*.xlsx`）。

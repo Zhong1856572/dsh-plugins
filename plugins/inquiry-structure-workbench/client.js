@@ -23,7 +23,7 @@ window.__ModuleLoader__.load({
     const API_BASE = '/inquiry-structure/api'
     const CHUNK_BYTES = 32 * 1024
     /** 客户端构建号：与服务端不一致说明桌面端没重启，跑的是旧界面 */
-    const CLIENT_BUILD = '1.0.4-20261113'
+    const CLIENT_BUILD = '1.0.5-20261117'
     /** 宿主上下文（注册时拿到）：用于取宿主服务，如 uiWorkspace.pickDirectory */
     let hostCtx = null
 

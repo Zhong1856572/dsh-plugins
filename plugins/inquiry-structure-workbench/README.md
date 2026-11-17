@@ -43,7 +43,7 @@ cd dsh-plugins/plugins/inquiry-structure-workbench
 
 # 2. 打包并装进本机 DSH
 npm pack
-dsh plugin --profile desktop add ./local-inquiry-structure-workbench-1.0.4.tgz
+dsh plugin --profile desktop add ./local-inquiry-structure-workbench-1.0.5.tgz
 ```
 
 装完在 DSH 桌面端的工作台列表里找到「询单结构式助手」。
